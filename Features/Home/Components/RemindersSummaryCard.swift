@@ -4,76 +4,119 @@ struct RemindersSummaryCard: View {
     let countThisMonth: Int
     let nextDue: UpcomingPayment?
 
+
+    private let radius: CGFloat = 22
+
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: 14) {
 
-            HStack {
-                Text("Upcoming payments")
-                    .font(.headline)
-
-                Spacer()
-
-                Text("\(countThisMonth) this month")
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
-            }
+            header
 
             if let nextDue {
-                HStack(spacing: 12) {
-                    AvatarView(
-                        name: nextDue.tenantName,
-                        imageName: nextDue.tenantImageName,
-                        size: CGSize(width: 44, height: 44),
-                        cornerRadius: 14
-                    )
-
-                    VStack(alignment: .leading, spacing: 2) {
-                        HStack(spacing: 8) {
-                            Text(nextDue.tenantName)
-                                .font(.subheadline.weight(.semibold))
-                                .lineLimit(1)
-
-                            if nextDue.isDelayed {
-                                Text("Delayed")
-                                    .font(.caption2.weight(.semibold))
-                                    .padding(.horizontal, 8)
-                                    .padding(.vertical, 3)
-                                    .background(Color.blue.opacity(0.12))
-                                    .foregroundStyle(Color.blue)
-                                    .clipShape(Capsule())
-                            }
-                        }
-
-                        Text(nextDue.propertyName)
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-                            .lineLimit(1)
-                    }
-
-                    Spacer(minLength: 0)
-
-                    VStack(alignment: .trailing, spacing: 2) {
-                        Text(nextDue.dueDate.formatted(date: .abbreviated, time: .omitted))
-                            .font(.caption)
-                            .foregroundStyle(.secondary)
-
-                        Text(nextDue.amount, format: .currency(code: "EUR"))
-                            .font(.subheadline.weight(.semibold))
-                    }
-                }
+                nextDueRow(nextDue)
             } else {
-                Text("No payments due this month")
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
+                emptyState
             }
         }
         .padding(16)
-        .background(.thinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 22, style: .continuous))
+        .background(Color(uiColor: .secondarySystemBackground))
+        .clipShape(RoundedRectangle(cornerRadius: radius, style: .continuous))
         .overlay(
-            RoundedRectangle(cornerRadius: 22, style: .continuous)
-                .stroke(Color.black.opacity(0.06), lineWidth: 1)
+            RoundedRectangle(cornerRadius: radius, style: .continuous)
+                .stroke(Color.primary.opacity(0.10), lineWidth: 1)
         )
+        .shadow(color: Color.black.opacity(0.04), radius: 3, x: 0, y: 1)
         .contentShape(Rectangle())
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(accessibilityLabel)
+        .accessibilityHint("Opens reminders")
+    }
+}
+
+private extension RemindersSummaryCard {
+
+    var header: some View {
+        HStack(alignment: .firstTextBaseline) {
+            Text("Upcoming payments")
+                .font(.headline)
+                .foregroundStyle(.primary)
+
+            Spacer()
+
+            Text("\(countThisMonth) this month")
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(Color.primary.opacity(0.68))
+        }
+    }
+
+    func nextDueRow(_ nextDue: UpcomingPayment) -> some View {
+        HStack(spacing: 12) {
+
+            AvatarView(
+                name: nextDue.tenantName,
+                imageName: nextDue.tenantImageName,
+                imageData: nil,
+                size: CGSize(width: 48, height: 48),
+                cornerRadius: 14
+            )
+            .accessibilityHidden(true)
+
+            VStack(alignment: .leading, spacing: 4) {
+                HStack(spacing: 8) {
+                    Text(nextDue.tenantName)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(.primary)
+                        .lineLimit(1)
+
+                    if nextDue.isDelayed {
+                        delayedBadge
+                    }
+                }
+
+                Text(nextDue.propertyName)
+                    .font(.caption)
+                    .foregroundStyle(Color.primary.opacity(0.68))
+                    .lineLimit(1)
+            }
+
+            Spacer(minLength: 8)
+
+            VStack(alignment: .trailing, spacing: 4) {
+                Text(nextDue.dueDate.formatted(date: .abbreviated, time: .omitted))
+                    .font(.caption)
+                    .foregroundStyle(Color.primary.opacity(0.68))
+
+                Text(nextDue.amount, format: .currency(code: "EUR"))
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(.primary)
+            }
+        }
+    }
+
+    var emptyState: some View {
+        Text("No payments due this month")
+            .font(.subheadline)
+            .foregroundStyle(Color.primary.opacity(0.72))
+            .frame(maxWidth: .infinity, alignment: .leading)
+    }
+
+    var delayedBadge: some View {
+        Text("Delayed")
+            .font(.caption2.weight(.semibold))
+            .padding(.horizontal, 8)
+            .padding(.vertical, 4)
+            .background(Color.blue.opacity(0.12))
+            .foregroundStyle(.blue)
+            .clipShape(Capsule())
+            .lineLimit(1)
+    }
+
+    var accessibilityLabel: String {
+        if let nextDue {
+            let delayedText = nextDue.isDelayed ? ", delayed" : ""
+            return "Upcoming payments, \(countThisMonth) this month. Next due: \(nextDue.tenantName), \(nextDue.amount.formatted(.currency(code: "EUR"))), due \(nextDue.dueDate.formatted(date: .long, time: .omitted))\(delayedText)."
+        } else {
+            return "Upcoming payments. No payments due this month."
+        }
     }
 }

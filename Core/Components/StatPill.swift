@@ -1,11 +1,3 @@
-//
-//  StatPill.swift
-//  The Lord of Land
-//
-//  Created by Bobur Toshpulatov on 25/02/26.
-//
-
-
 import SwiftUI
 
 struct StatPill: View {
@@ -23,20 +15,29 @@ struct StatPill: View {
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        VStack(alignment: .leading, spacing: 6) {
             Text(title)
-                .font(.caption)
-                .foregroundStyle(.secondary)
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(Color.primary.opacity(0.68))
+                .lineLimit(1)
+
             Text(valueText)
-                .font(.headline)
+                .font(.headline.weight(.semibold))
+                .foregroundStyle(.primary)
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
         }
-        .padding(12)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(.thinMaterial)
-        .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+        .padding(.horizontal, 14)
+        .padding(.vertical, 12)
+        .frame(maxWidth: .infinity, minHeight: 72, alignment: .leading)
+        .background(Color(uiColor: .secondarySystemBackground))
+        .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
         .overlay(
-            RoundedRectangle(cornerRadius: 16, style: .continuous)
-                .stroke(Color.black.opacity(0.06), lineWidth: 1)
+            RoundedRectangle(cornerRadius: 18, style: .continuous)
+                .stroke(Color.primary.opacity(0.10), lineWidth: 1)
         )
+        .shadow(color: Color.black.opacity(0.04), radius: 3, x: 0, y: 1)
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel("\(title), \(valueText)")
     }
 }

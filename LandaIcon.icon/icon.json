@@ -1,0 +1,212 @@
+{
+  "fill" : {
+    "solid" : "srgb:1.00000,1.00000,1.00000,1.00000"
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "hidden" : true,
+          "image-name" : "Frame Copy 6 2.png",
+          "name" : "Frame Copy 6 2",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              -8.498592829997051,
+              -17
+            ]
+          }
+        },
+        {
+          "hidden" : true,
+          "image-name" : "Frame Copy 2ù.png",
+          "name" : "Frame Copy 2ù"
+        },
+        {
+          "glass" : true,
+          "hidden" : true,
+          "image-name" : "Frame Copy 222.png",
+          "name" : "Frame Copy 222"
+        },
+        {
+          "hidden" : false,
+          "image-name" : "3Frame Copy 2.png",
+          "name" : "3Frame Copy 2"
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    },
+    {
+      "layers" : [
+        {
+          "hidden" : true,
+          "image-name" : "Frame Copy 5a.png",
+          "name" : "Frame Copy 5a",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              -207.5,
+              226
+            ]
+          }
+        },
+        {
+          "fill-specializations" : [
+            {
+              "appearance" : "dark",
+              "value" : {
+                "solid" : "display-p3:0.00000,0.00000,0.00000,1.00000"
+              }
+            }
+          ],
+          "glass" : true,
+          "hidden" : false,
+          "image-name" : "Frame Copy 26.png",
+          "name" : "Frame Copy 26"
+        },
+        {
+          "fill-specializations" : [
+            {
+              "appearance" : "dark",
+              "value" : {
+                "solid" : "display-p3:0.00000,0.00000,0.00000,1.00000"
+              }
+            }
+          ],
+          "glass" : false,
+          "hidden" : false,
+          "image-name" : "Frame Copy 2333.png",
+          "name" : "Frame Copy 2333"
+        },
+        {
+          "hidden" : true,
+          "image-name" : "Frame Copyssa.png",
+          "name" : "Frame Copyssa",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              -207.5,
+              -168
+            ]
+          }
+        },
+        {
+          "hidden" : true,
+          "image-name" : "Frame Copy 5.png",
+          "name" : "Frame Copy 5",
+          "opacity-specializations" : [
+            {
+              "appearance" : "tinted",
+              "value" : 1
+            }
+          ]
+        },
+        {
+          "hidden" : true,
+          "image-name" : "Frame Copyss.png",
+          "name" : "Frame Copyss",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              -19,
+              -14
+            ]
+          }
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    },
+    {
+      "hidden" : false,
+      "layers" : [
+        {
+          "fill" : "none",
+          "hidden" : false,
+          "image-name" : "Frame Copy 2222.png",
+          "name" : "Frame Copy 2222"
+        },
+        {
+          "glass" : true,
+          "hidden" : true,
+          "image-name" : "Frame Copy 212.png",
+          "name" : "Frame Copy 212"
+        },
+        {
+          "hidden" : true,
+          "image-name" : "Frame Copy 211.png",
+          "name" : "Frame Copy 211"
+        },
+        {
+          "hidden" : true,
+          "image-name" : "Frame Copy 4.png",
+          "name" : "Frame Copy 4"
+        },
+        {
+          "hidden" : true,
+          "image-name" : "Layer. 1.png",
+          "name" : "Layer. 1"
+        },
+        {
+          "hidden" : true,
+          "image-name" : "Frame Copyr.png",
+          "name" : "Frame Copyr"
+        },
+        {
+          "blend-mode" : "normal",
+          "fill" : "none",
+          "glass" : false,
+          "hidden" : true,
+          "image-name" : "Frame Copy 32.png",
+          "name" : "Frame Copy 32",
+          "opacity" : 1
+        },
+        {
+          "hidden" : true,
+          "image-name" : "Frame Copyggg.png",
+          "name" : "Frame Copyggg"
+        }
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    },
+    {
+      "layers" : [
+
+      ],
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.5
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}

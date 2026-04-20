@@ -1,59 +1,48 @@
-//
-//  RootView.swift
-//  The Lord of Land
-//
-//  Created by Bobur Toshpulatov on 21/02/26.
-//
-
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
-    @State private var store = MockData.makeStore()
-    @State private var searchString = ""
+    @Environment(\.modelContext) private var modelContext
+
+    @State private var store = AppStore()
+    @State private var hasLoadedPersistentData = false
 
     var body: some View {
-        TabView {
+        NavigationStack {
+            HomeView(store: store)
+        }
+        .task {
+            guard !hasLoadedPersistentData else { return }
 
-            Tab("Home", systemImage: "house") {
-                NavigationStack {
-                    HomeView(store: store)
-                }
-            }
+            let appStore = store
+            appStore.load(from: modelContext)
 
-//            Tab("Reminders", systemImage: "bell") {
-//                NavigationStack {
-//                    RemindersView(store: store)
-//                }
-//            }
-
-            Tab("Settings", systemImage: "gearshape") {
-                NavigationStack {
-                    SettingsView()
-                        .navigationTitle("Settings")
-                }
-            }
-
-            Tab(role: .search) {
-                NavigationStack {
-                    List {
-                        Text("Search screen")
-                        Text("Search screen2")
-                    }
-                    .navigationTitle("Search")
-                    .searchable(text: $searchString)
-                }
-            }
+            hasLoadedPersistentData = true
+        }
+        .onChange(of: store.properties) { _, _ in
+            persist()
+        }
+        .onChange(of: store.tenants) { _, _ in
+            persist()
+        }
+        .onChange(of: store.payments) { _, _ in
+            persist()
+        }
+        .onChange(of: store.bills) { _, _ in
+            persist()
+        }
+        .onChange(of: store.billShares) { _, _ in
+            persist()
+        }
+        .onChange(of: store.occupancyHistory) { _, _ in
+            persist()
         }
     }
-}
 
-struct SettingsView: View {
-    var body: some View {
-        Text("Settings")
+    private func persist() {
+        guard hasLoadedPersistentData else { return }
+
+        let appStore = store
+        appStore.save(to: modelContext)
     }
 }
-
-#Preview {
-    ContentView()
-}
-

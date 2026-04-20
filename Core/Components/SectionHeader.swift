@@ -6,15 +6,21 @@ struct SectionHeader: View {
     var body: some View {
         HStack(spacing: 6) {
             Text(title)
-                .font(.title3.bold())
+                .font(.title3.weight(.semibold))
                 .foregroundStyle(.primary)
+                .multilineTextAlignment(.leading)
 
             Image(systemName: "chevron.right")
-                .font(.subheadline.weight(.semibold))
+                .font(.caption.weight(.semibold))
                 .foregroundStyle(.secondary)
+                .accessibilityHidden(true)
 
             Spacer(minLength: 0)
         }
+        .padding(.vertical, 2)
         .contentShape(Rectangle())
+        .accessibilityElement(children: .combine)
+        .accessibilityLabel(title)
+        .accessibilityHint("Open \(title.lowercased())")
     }
 }

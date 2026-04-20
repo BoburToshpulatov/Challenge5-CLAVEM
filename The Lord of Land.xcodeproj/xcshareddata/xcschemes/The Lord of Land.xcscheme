@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D4899AC02F4A086400A3517E"
-               BuildableName = "The Lord of Land.app"
+               BuildableName = "Clavem.app"
                BlueprintName = "The Lord of Land"
                ReferencedContainer = "container:The Lord of Land.xcodeproj">
             </BuildableReference>
@@ -46,7 +46,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D4899AC02F4A086400A3517E"
-            BuildableName = "The Lord of Land.app"
+            BuildableName = "Clavem.app"
             BlueprintName = "The Lord of Land"
             ReferencedContainer = "container:The Lord of Land.xcodeproj">
          </BuildableReference>
@@ -63,7 +63,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D4899AC02F4A086400A3517E"
-            BuildableName = "The Lord of Land.app"
+            BuildableName = "Clavem.app"
             BlueprintName = "The Lord of Land"
             ReferencedContainer = "container:The Lord of Land.xcodeproj">
          </BuildableReference>

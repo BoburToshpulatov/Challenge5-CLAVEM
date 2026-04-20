@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D4A584E62F5743CC0050A258 /* LandaIcon.icon in Resources */ = {isa = PBXBuildFile; fileRef = D4A584E52F5743CC0050A258 /* LandaIcon.icon */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		D4899AFF2F4A4F5400A3517E /* The Lord of Land.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The Lord of Land.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4899AFF2F4A4F5400A3517E /* Clavem.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clavem.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4A584E52F5743CC0050A258 /* LandaIcon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = LandaIcon.icon; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -31,6 +36,11 @@
 			path = Recources;
 			sourceTree = "<group>";
 		};
+		D4A586C12F5F93420050A258 /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Shared;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,11 +57,13 @@
 		D4899AB82F4A086400A3517E = {
 			isa = PBXGroup;
 			children = (
+				D4A586C12F5F93420050A258 /* Shared */,
+				D4A584E52F5743CC0050A258 /* LandaIcon.icon */,
 				D4899B022F4A504000A3517E /* Recources */,
 				D4899AF02F4A15B900A3517E /* Core */,
 				D4899AEF2F4A15A200A3517E /* Features */,
 				D4899AFB2F4A15C700A3517E /* The Lord of Land */,
-				D4899AFF2F4A4F5400A3517E /* The Lord of Land.app */,
+				D4899AFF2F4A4F5400A3517E /* Clavem.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,12 +87,13 @@
 				D4899AF02F4A15B900A3517E /* Core */,
 				D4899AFB2F4A15C700A3517E /* The Lord of Land */,
 				D4899B022F4A504000A3517E /* Recources */,
+				D4A586C12F5F93420050A258 /* Shared */,
 			);
 			name = "The Lord of Land";
 			packageProductDependencies = (
 			);
 			productName = "The Lord of Land";
-			productReference = D4899AFF2F4A4F5400A3517E /* The Lord of Land.app */;
+			productReference = D4899AFF2F4A4F5400A3517E /* Clavem.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -124,6 +137,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4A584E62F5743CC0050A258 /* LandaIcon.icon in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,16 +280,20 @@
 		D4899ACD2F4A086400A3517E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = LandaIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D46547VTPG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "The-Lord-of-Land-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_CFBundleDisplayName = Clavem;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Landa uses the camera so you can add photos for properties, tenants, and bills.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Landa uses your photo library so you can choose photos for properties, tenants, and bills.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -287,8 +305,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.boburtoshpulatov.The-Lord-of-Land";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.boburtoshpulatov.landlord;
+				PRODUCT_NAME = Clavem;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
@@ -302,16 +320,20 @@
 		D4899ACE2F4A086400A3517E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = LandaIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D46547VTPG;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "The-Lord-of-Land-Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_CFBundleDisplayName = Clavem;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Landa uses the camera so you can add photos for properties, tenants, and bills.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Landa uses your photo library so you can choose photos for properties, tenants, and bills.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -323,8 +345,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.boburtoshpulatov.The-Lord-of-Land";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.boburtoshpulatov.landlord;
+				PRODUCT_NAME = Clavem;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;

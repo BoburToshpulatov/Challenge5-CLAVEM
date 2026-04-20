@@ -1,39 +1,51 @@
 import SwiftUI
 
 struct PropertiesCarousel: View {
-    let properties: [Property]
+    @Bindable var store: AppStore
     let onTapProperty: (Property) -> Void
 
     @State private var index = 0
 
-    private let horizontalPadding: CGFloat = 16   // same as headline
-    private let cardHeight: CGFloat = 240
-    private let gap: CGFloat = 16                 // division between cards
+    private let horizontalPadding: CGFloat = 16
+    private let cardHeight: CGFloat = 242
+    private let dotsSpace: CGFloat = 28
+
+    private var properties: [Property] {
+        store.properties
+    }
 
     var body: some View {
         GeometryReader { geo in
             let screenWidth = geo.size.width
-
-            // Card width leaves equal 16 padding on both sides
             let cardWidth = screenWidth - (horizontalPadding * 2)
 
-            TabView(selection: $index) {
-                ForEach(Array(properties.enumerated()), id: \.offset) { i, property in
-
-                    ZStack {
-                        PropertyCard(property: property)
+            VStack(spacing: 0) {
+                TabView(selection: $index) {
+                    ForEach(Array(properties.enumerated()), id: \.element.id) { i, property in
+                        Button {
+                            onTapProperty(property)
+                        } label: {
+                            PropertyCard(
+                                property: property,
+                                tenantCount: store.tenantCount(for: property),
+                                monthlyIncome: store.monthlyIncome(for: property)
+                            )
                             .frame(width: cardWidth, height: cardHeight)
-                            .onTapGesture {
-                                onTapProperty(property)
-                            }
+                        }
+                        .buttonStyle(.plain)
+                        .frame(width: screenWidth, height: cardHeight, alignment: .top)
+                        .tag(i)
+                        .accessibilityHint("Opens property details")
                     }
-                    .frame(width: screenWidth)        // full page width
-                    .padding(.horizontal, gap / 2)    // real division
-                    .tag(i)
                 }
+                .frame(height: cardHeight)
+                .tabViewStyle(.page(indexDisplayMode: properties.count > 1 ? .automatic : .never))
+
+                Color.clear
+                    .frame(height: properties.count > 1 ? dotsSpace : 0)
             }
-            .tabViewStyle(.page(indexDisplayMode: .automatic))
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
         }
-        .frame(height: cardHeight)
+        .frame(height: cardHeight + (properties.count > 1 ? dotsSpace : 0))
     }
 }
